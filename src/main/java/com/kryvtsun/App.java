@@ -2,31 +2,31 @@ package com.kryvtsun;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage s) {
-        // set title for the stage
-        s.setTitle("creating buttons");
+        TabPane tabPane = new TabPane();
 
-        // create a button
-        Button b = new Button("button");
+        Tab tab1 = new Tab("Planes", new Label("Show all planes available"));
+        Tab tab2 = new Tab("Cars"  , new Label("Show all cars available"));
+        Tab tab3 = new Tab("Boats" , new Label("Show all boats available"));
 
-        // create a stack pane
-        StackPane r = new StackPane();
+        tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(tab2);
+        tabPane.getTabs().add(tab3);
 
-        // add button
-        r.getChildren().add(b);
+        VBox vBox = new VBox(tabPane);
+        Scene scene = new Scene(vBox, 320, 240);
 
-        // create a scene
-        Scene sc = new Scene(r, 640, 480);
-
-        // set the scene
-        s.setScene(sc);
+        s.setScene(scene);
+        s.setTitle("JavaFX App");
 
         s.show();
     }
